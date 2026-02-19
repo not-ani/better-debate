@@ -56,6 +56,20 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
 
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          profile: minimal
+
+      - name: Setup Protobuf compiler
+        uses: arduino/setup-protoc@v3
+
+      - name: Cache Rust dependencies and artifacts
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            packages/core -> target
+
       - name: Install dependencies
         shell: bash
         run: bun install --frozen-lockfile
