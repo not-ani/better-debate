@@ -8,6 +8,8 @@ Better word is a fully custom replacement for verbatim and microsft word. It is 
 
 # Install Instructions
 
+1. go to releases and download the latest release
+
 # electrobun-monorepo
 
 Monorepo using Bun workspaces with:
