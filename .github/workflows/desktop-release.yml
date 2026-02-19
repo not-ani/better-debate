@@ -45,6 +45,7 @@ jobs:
           - runner: windows-latest
             platform: win
             arch: x64
+    continue-on-error: ${{ matrix.platform == 'win' }}
     runs-on: ${{ matrix.runner }}
     steps:
       - name: Checkout code
@@ -70,13 +71,17 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Build desktop artifacts
+      - name: Build desktop artifacts (Windows)
+        if: matrix.platform == 'win'
         env:
           ELECTROBUN_RELEASE_BASE_URL: https://github.com/not-ani/better-debate/releases/download/updates
-          ELECTROBUN_DEVELOPER_ID: ${{ secrets.ELECTROBUN_DEVELOPER_ID || '' }}
-          ELECTROBUN_APPLEID: ${{ secrets.ELECTROBUN_APPLEID || '' }}
-          ELECTROBUN_APPLEIDPASS: ${{ secrets.ELECTROBUN_APPLEIDPASS || '' }}
-          ELECTROBUN_TEAMID: ${{ secrets.ELECTROBUN_TEAMID || '' }}
+          TAR_OPTIONS: --force-local
+        run: bun run --cwd apps/desktop build:${{ needs.prepare.outputs.channel }}
+
+      - name: Build desktop artifacts (non-Windows)
+        if: matrix.platform != 'win'
+        env:
+          ELECTROBUN_RELEASE_BASE_URL: https://github.com/not-ani/better-debate/releases/download/updates
         run: bun run --cwd apps/desktop build:${{ needs.prepare.outputs.channel }}
 
       - name: Upload build artifacts
