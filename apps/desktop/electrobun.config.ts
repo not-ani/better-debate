@@ -1,9 +1,7 @@
 import type { ElectrobunConfig } from "electrobun/bun";
 import packageJson from "./package.json" assert { type: "json" };
 
-const defaultReleaseBaseUrl = process.env.GITHUB_REPOSITORY
-  ? `https://github.com/${process.env.GITHUB_REPOSITORY}/releases/download/updates`
-  : "https://github.com/OWNER/REPO/releases/download/updates";
+const defaultReleaseBaseUrl = "https://github.com/not-ani/better-debate/releases/download/updates";
 
 export default {
   app: {

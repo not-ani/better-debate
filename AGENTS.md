@@ -1,3 +1,4 @@
+`/repos/*` are readonly references to the Electrobun apps and general shit
 Default to using Bun instead of Node.js.
 
 - Use `bun <file>` instead of `node <file>` or `ts-node <file>`
