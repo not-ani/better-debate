@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.DS_Store
+
+apps/desktop/.electrobun/
+packages/core/target/
+packages/ui-svelte/dist/
+packages/ui-solid/dist/
+repos/
+
+apps/desktop/build/
+.tmp-core-data/
+packages/core/.tmp-benchmark-data/

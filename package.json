@@ -1,0 +1,33 @@
+{
+  "name": "electrobun-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "bun run dev:core & bun run dev:solid & bun run dev:desktop",
+    "build": "bun run build:core && bun run build:solid && bun run build:desktop",
+    "clean": "bun run clean:core && bun run clean:solid && bun run clean:desktop",
+    "dev:core": "bun run --cwd packages/core build:dev",
+    "dev:svelte": "bun run --cwd packages/ui-svelte dev",
+    "dev:solid": "bun run --cwd packages/ui-solid dev",
+    "dev:desktop": "bun run --cwd apps/desktop dev",
+    "build:core": "bun run --cwd packages/core build",
+    "build:svelte": "bun run --cwd packages/ui-svelte build",
+    "build:solid": "bun run --cwd packages/ui-solid build",
+    "build:desktop": "bun run --cwd apps/desktop build",
+    "build:desktop:canary": "bun run --cwd apps/desktop build:canary",
+    "build:desktop:stable": "bun run --cwd apps/desktop build:stable",
+    "clean:core": "bun run --cwd packages/core clean",
+    "clean:svelte": "bun run --cwd packages/ui-svelte clean",
+    "clean:solid": "bun run --cwd packages/ui-solid clean",
+    "clean:desktop": "bun run --cwd apps/desktop clean",
+    "test": "bun run test:core && bun run test:solid",
+    "test:core": "bun run --cwd packages/core test",
+    "test:solid": "bun run --cwd packages/ui-solid test",
+    "bench": "bun run bench:core && bun run bench:solid",
+    "bench:core": "bun run --cwd packages/core bench",
+    "bench:solid": "bun run --cwd packages/ui-solid bench"
+  }
+}

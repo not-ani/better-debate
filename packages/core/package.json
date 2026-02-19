@@ -1,0 +1,13 @@
+{
+  "name": "@acme/core",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build:dev": "cargo build && bun run scripts/copy-artifact.ts --debug",
+    "build": "cargo build --release && bun run scripts/copy-artifact.ts",
+    "clean": "cargo clean",
+    "test": "cargo test",
+    "bench": "bun run build:dev && bun run scripts/benchmark.ts"
+  }
+}

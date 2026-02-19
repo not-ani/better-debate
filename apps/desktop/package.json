@@ -1,0 +1,18 @@
+{
+  "name": "@acme/desktop",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run predev && bunx electrobun build --env=dev && bunx electrobun dev",
+    "predev": "bun run --cwd ../../packages/core build:dev && bun run --cwd ../../packages/ui-solid build",
+    "build": "bun run prebuild && bunx electrobun build --env=dev",
+    "build:canary": "bun run prebuild && bunx electrobun build --env=canary",
+    "build:stable": "bun run prebuild && bunx electrobun build --env=stable",
+    "prebuild": "bun run --cwd ../../packages/core build && bun run --cwd ../../packages/ui-solid build",
+    "clean": "rm -rf dist .electrobun"
+  },
+  "dependencies": {
+    "electrobun": "^1.12.3"
+  }
+}
