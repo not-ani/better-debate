@@ -42,11 +42,9 @@ jobs:
           - runner: macos-15
             platform: macos
             arch: arm64
-            shell: bash
           - runner: windows-latest
             platform: win
             arch: x64
-            shell: pwsh
     runs-on: ${{ matrix.runner }}
     steps:
       - name: Checkout code
@@ -70,11 +68,9 @@ jobs:
             packages/core -> target
 
       - name: Install dependencies
-        shell: ${{ matrix.shell }}
         run: bun install --frozen-lockfile
 
       - name: Build desktop artifacts
-        shell: ${{ matrix.shell }}
         env:
           ELECTROBUN_RELEASE_BASE_URL: https://github.com/not-ani/better-debate/releases/download/updates
           ELECTROBUN_DEVELOPER_ID: ${{ secrets.ELECTROBUN_DEVELOPER_ID || '' }}
