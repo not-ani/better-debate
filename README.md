@@ -6,6 +6,8 @@ A set of software built for debaters by debaters.
 
 Better word is a fully custom replacement for verbatim and microsft word. It is built for the peropuses of creating cards for debate and debating.
 
+# Install Instructions
+
 # electrobun-monorepo
 
 Monorepo using Bun workspaces with:
